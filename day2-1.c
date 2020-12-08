@@ -5,7 +5,7 @@ int main(void)
 {
     FILE *dosya = fopen("p2.txt","r");
     char a;
-    char file[112];
+    int file[121];
     int temp[3];
     int stroge_counter=0;
     int temp_counter=0;
@@ -52,25 +52,29 @@ int main(void)
         }
         
     }
+    //printf("%d",stroge_counter);
 
+    file[1] = 12;
+    file[2] = 2;
     for(int i=0;i<stroge_counter;i+=4)
     {
-        printf("%d %d %d %d \n",file[i],file[i+1],file[i+2],file[i+3]);
+        //printf("%d %d %d %d \n",file[i],file[i+1],file[i+2],file[i+3]);
         if(file[i] == 1)
-        {
-            file[file[i+3]] = file[i+1] + file[i+2];
+        {   
+            file[file[i+3]] = file[file[i+1]] + file[file[i+2]];
         }
 
         else if(file[i] == 2)
 
         {
-            file[file[i+3]] = file[i+1] * file[i+2];
+            file[file[i+3]] = file[file[i+1]] * file[file[i+2]];
         }
 
-        //break;
+        
 
     }
     printf("%d",file[0]);
+    
 
 
 

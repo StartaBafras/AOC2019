@@ -35,7 +35,27 @@ fscanf(dosya_4,"%d,%d",&kontrol_3[v],&kontrol_4[v]);
         {
             if(kontrol_1[c]==kontrol_3[v] &&kontrol_2[c]==kontrol_4[v])
             {
-               printf("%d,%d\n",kontrol_1[c],kontrol_2[c]);
+               if(kontrol_1[c]<0 && kontrol_2[c]<0)
+                {
+                 printf("(%d,%d)=",kontrol_1[c],kontrol_2[c]);
+                 printf("%d\n",(-1*kontrol_2[c])+(-1*kontrol_1[c]));
+                }
+                else if(kontrol_2[c]<0 && kontrol_1[c]>=0)
+                {
+                 printf("(%d,%d)=",kontrol_1[c],kontrol_2[c]);
+                 printf("%d\n",(-1*kontrol_2[c])+kontrol_1[c]);
+                }
+                else if(kontrol_1[c]<0  && kontrol_2[c]>=0)
+                {
+                printf("(%d,%d)=",kontrol_1[c],kontrol_2[c]);
+                printf("%d\n",(-1*kontrol_1[c])+kontrol_2[c]);
+
+                }
+                else
+                {
+                printf("(%d,%d)=",kontrol_1[c],kontrol_2[c]);
+                printf("%d\n",kontrol_1[c]+kontrol_2[c]);
+                }
             }
         }
 

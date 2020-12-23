@@ -3,47 +3,134 @@
 
 int main()
 {
-FILE*dosya_3;
-dosya_3=fopen("ucuncu.txt","r");
+    FILE*dosya_1;
+    dosya_1=fopen("birinci.txt","r");
 
-FILE*dosya_4;
-dosya_4=fopen("dorduncu.txt","r");
+    FILE*dosya_2;
+    dosya_2=fopen("ikinci.txt","r");
 
+  FILE*dosya_3;
+    dosya_3=fopen("ucuncu.txt","w+");
 
-int kontrol_1[154530];
-int kontrol_2[154530];
-int kontrol_3[157570];
-int kontrol_4[157570];
+  FILE*dosya_4;
+    dosya_4=fopen("dorduncu.txt","w+");
 
-int c=0,v=0;
+   char karakter_1[301];
+   int sayi_1[301];
 
+   char karakter_2[301];
+   int sayi_2[301];
 
-for(c=0;c<154530;c++)
-{
-fscanf(dosya_3,"%d,%d",&kontrol_1[c],&kontrol_2[c]);
-}
-
-for(v=0;v<157570;v++)
-{
-fscanf(dosya_4,"%d,%d",&kontrol_3[v],&kontrol_4[v]);
-}
+    int i=0,j=0,c=0,v=0;
+    int x=0,y=0,x2=0,y2=0;
+    int k=0;
 
 
-    for(c=0;c<154530;c++)
-    {
-        for(v=0;v<157570;v++)
+      while(!feof(dosya_1))
+       {
+
+        karakter_1[i]=fgetc(dosya_1);
+        fscanf(dosya_1,"%d,",&sayi_1[i]);
+
+
+       if(karakter_1[i]=='R')
         {
-            if(kontrol_1[c]==kontrol_3[v] &&kontrol_2[c]==kontrol_4[v])
+            for(k=0;k<sayi_1[i];k++)
             {
-               printf("%d,%d\n",kontrol_1[c],kontrol_2[c]);
+            x=x+1;
+            fprintf(dosya_3,"%d,%d\n",x,y);
             }
         }
 
+        else if(karakter_1[i]=='L')
+        {
+            for(k=0;k<sayi_1[i];k++)
+            {
+
+            x=x-1;
+            fprintf(dosya_3,"%d,%d\n",x,y);
+            }
+
+        }
+
+
+        else if(karakter_1[i]=='U')
+        {
+            for(k=0;k<sayi_1[i];k++)
+            {
+             y=y+1;
+             fprintf(dosya_3,"%d,%d\n",x,y);
+            }
+        }
+
+        else if(karakter_1[i]=='D')
+        {
+            for(k=0;k<sayi_1[i];k++)
+            {
+
+             y=y-1;
+             fprintf(dosya_3,"%d,%d\n",x,y);
+            }
+        }
+
+
+    i++;
     }
 
 
 
+
+        while(!feof(dosya_2))
+        {
+        karakter_2[j]=fgetc(dosya_2);
+        fscanf(dosya_2,"%d,",&sayi_2[j]);
+
+
+        if(karakter_2[j]=='R')
+        {
+            for(k=0;k<sayi_2[j];k++)
+            {
+            x2=x2+1;
+            fprintf(dosya_4,"%d,%d\n",x2,y2);
+            }
+        }
+
+         else if(karakter_2[j]=='L')
+        {
+           for(k=0;k<sayi_2[j];k++)
+            {
+
+            x2=x2-1;
+            fprintf(dosya_4,"%d,%d\n",x2,y2);
+            }
+        }
+
+        else if(karakter_2[j]=='U')
+        {
+            for(k=0;k<sayi_2[j];k++)
+            {
+            y2=y2+1;
+            fprintf(dosya_4,"%d,%d\n",x2,y2);
+            }
+        }
+
+         else if(karakter_2[j]=='D')
+        {
+            for(k=0;k<sayi_2[j];k++)
+            {
+            y2=y2-1;
+            fprintf(dosya_4,"%d,%d\n",x2,y2);
+            }
+        }
+
+
+        j++;
+        }
+
+    fclose(dosya_1);
+    fclose(dosya_2);
     fclose(dosya_3);
     fclose(dosya_4);
-    return 0;
+
+return 0;
 }

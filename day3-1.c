@@ -32,7 +32,7 @@ int main(void)
     int last_valuey=0;
     int j;
     FILE *answerA = fopen("p3Ba.txt","w");
-    for(i =0;i<302;i++)
+    for(i =0;i<302;i++)//Değişmeli
     {
         if(file.directory[i] == 'L')
         {

@@ -152,10 +152,10 @@ int g;
         rewind(dorduncu);
        
 	   
-int kontrol_1[154530];
-int kontrol_2[154530];
-int kontrol_3[157570];
-int kontrol_4[157570];
+int kontrol_1[154640];
+int kontrol_2[154640];
+int kontrol_3[157490];
+int kontrol_4[157490];
 
 int c=0,v=0;
 int step1;

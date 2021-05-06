@@ -9,7 +9,7 @@ typedef struct planet
     struct planet *next_coordinate[5];//5 ten fazla olabilir mi?
 }planet;
 
-//fdata her zaman bütün listeyi taraması için var onu göndermeden önce dataset hep kullanıldığı için kaldığı yerden arama yapıyordu
+//fdata her zaman bütün listeyi taraması için var onu göndermeden önce dataset kullanılmaya devam ettiği için kaldığı yerden arama yapıyordu
 void search(char *planet_name,char *dataset,int data_size,planet *p,char *fdata)
 {   
     
@@ -22,12 +22,9 @@ void search(char *planet_name,char *dataset,int data_size,planet *p,char *fdata)
             printf("konum %d ",i);
             if(i%2 == 0)
             {
-                draw(planet_name,dataset+=4,p,data_size,fdata);
-                dataset-=4;//fonksiyonun içindekide ilerlettiği için i artmadığı halde işaret edilen yer değişiyordu
-                //herhalde şu --dataset kullanımı bu gibi durumlar için icat edilmiş
+                draw(planet_name,dataset+4,p,data_size,fdata);
             }
         }
-        //printf("%s",dataset[i]);
         dataset+=4;
     }
 
@@ -56,9 +53,7 @@ void explorer(planet *p,int counter,int *answer)
     {
         if(p->next_coordinate[i] != NULL)
         {   
-            counter++;
-            explorer(p->next_coordinate[i],counter,answer);//arttırma azaltmaya çözüm lazım
-            counter--;
+            explorer(p->next_coordinate[i],counter+1,answer);
         }
     }
     printf("\n %s :%d",p->orbit_name,counter);
@@ -112,12 +107,13 @@ int main(void)
     p->next_coordinate[0] = NULL;
     search(&aranan,&dataset,size*2,p,&dataset);
 
-    printf("\n%s",p->orbit_name);
-    printf("\n%s",p->next_coordinate[0]->orbit_name);
+    //printf("\n%s",p->orbit_name);
+    //printf("\n%s",p->next_coordinate[0]->orbit_name);
+
     int *a = malloc(sizeof(int));
     *a = 0;
     explorer(p,0,a);
-    printf("\n%d",*a);
+    printf("\nYörünge sayısı: %d",*a);
 
     
     
